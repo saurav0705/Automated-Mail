@@ -1,6 +1,6 @@
 def mail_body(expertise):
 
-    mailBody ="""Subject : Application regarding open post as """ +expertise+""" .\n\nHello 
+    mailBody =""" .\n\nHello 
 
     I came across a very exciting position on your LinkedIN that I believe fits me perfectly. I am interested in applying for the position of """+ expertise +""". After reading the job description and requirements and matching it with my own experiences, I know that I would be a valuable asset to your organization.
 

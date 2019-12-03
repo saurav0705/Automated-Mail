@@ -47,12 +47,16 @@ def fileValidation(**kwargs):
     #created file which will hold validated data
     modifiedFile = pathOfFile+'\\modified.txt'
     validFile = open(modifiedFile,'w')
+    validDataList = []
     with fileData as variable:
         for line in variable:
             if(check(line.replace("\n",""))):
-                validFile.write(line)
+                validDataList.append(line)
             else:
                 flag=True
+    validDataSet = set(validDataList)
+    for validData in validDataSet:
+        validFile.write(validData)
     fileData.close()
     validFile.close()        
     #removing the old file
@@ -67,3 +71,4 @@ def fileValidation(**kwargs):
 
 
 
+fileValidation(file=r"C:\Users\saurav.aggarwal\Desktop\Python project\sample.txt")

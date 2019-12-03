@@ -45,10 +45,10 @@ def sendMAil(data,hr):
         msg.attach(mimeObj) 
 
         # creates SMTP session 
-        mailObj = smtplib.SMTP('smtp.gmail.com', 587) 
+        mailObj = smtplib.SMTP_SSL('smtp.gmail.com', 465) 
 
         # start TLS for security 
-        mailObj.starttls() 
+        #mailObj.starttls() 
 
         # Authentication 
         mailObj.login(data['email'], data['password']) 
@@ -63,6 +63,6 @@ def sendMAil(data,hr):
         mailObj.quit() 
         print("Successfully sent to "+hr)
     except Exception as e:
-        print(e)
+        print("error:  "+str(e))
 
-
+sendMAil(getDetails('saurav'),"sauravaggarwal98@gmail.com")

@@ -46,27 +46,14 @@ def fileValidation(**kwargs):
         exit()
     #created file which will hold validated data
     modifiedFile = pathOfFile+'\\modified.txt'
-    validFile = open(modifiedFile,'w')<<<<<<< HEAD
-import re
-import os 
-
-
+    validFile = open(modifiedFile,'w')
     validDataList = []
     with fileData as variable:
         for line in variable:
-            if(crmatting funct for ouput
-t",""))):
+            if(check(line.replace("\n",""))):
                 validDataList.append(line)
             else:
-       rt os 
-
-#formatting function for output
-def divider():
-  matting function foutput
-def divrrmatting function for output
-def divrmatt
-def ing funion for outpuing function for output
-def  function or outdef dividp         flag=True
+                flag=True
     validDataSet = set(validDataList)
     for validData in validDataSet:
         validFile.write(validData)
@@ -80,3 +67,8 @@ def  function or outdef dividp         flag=True
     if (flag==True):
         print("file validated and edited succesfully")
     else:
+        print("found no invalid data in file")
+
+
+
+fileValidation(file=r"C:\Users\saurav.aggarwal\Desktop\Python project\sample.txt")

@@ -3,10 +3,7 @@ import os
 
 #formatting function for output
 def divider():
-    for var in range(0,50):
-        print("-",end="")
-    print()
-
+    print("#"*50)
 
 #function for extracting path and filename from the user input
 def extractPath(completePath):
@@ -15,14 +12,23 @@ def extractPath(completePath):
         if completePath[lengthPath]=='\\':
             break
         lengthPath-=1
-    return {
-        'filePath':completePath[0:lengthPath],
-        'fileName':completePath[lengthPath+1:]
+    #if it only contains filename not a path
+    if lengthPath<0:
+        return{
+            'filePath':"",
+            'fileName':completePath
         }
+    #if it contains path
+    else:
+        return {
+            'filePath':completePath[0:lengthPath],
+            'fileName':completePath[lengthPath+1:]
+            }
 
 
 # validation of file for emails
-def check(email):  
+def check(email):
+    #matching a regex pattern for enail validation  
     if(re.search(r"^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$",email)):  
         return True  
           
@@ -31,12 +37,14 @@ def check(email):
 
 #function integrating all the validation functions 
 def fileValidation(**kwargs):
-    print("Validating File :: "+kwargs['file'])
     divider()
+    print("Validating File :: "+kwargs['file']) 
+
+    #extracting path and filename from the file for future use   
     infoFile = extractPath(kwargs['file'])
     pathOfFile=infoFile['filePath']
     fileName=infoFile['fileName']
- 
+    
     flag= False
     #checking if the file given by the user exist or not
     try:  
@@ -45,18 +53,25 @@ def fileValidation(**kwargs):
         print("file not Found")
         exit()
     #created file which will hold validated data
-    modifiedFile = pathOfFile+'\\modified.txt'
+    if pathOfFile=="":
+        modifiedFile ='modified.txt'
+    else:
+        modifiedFile = pathOfFile+'\\modified.txt'
     validFile = open(modifiedFile,'w')
     validDataList = []
+    #cerating a list of data prenet in the weekned file 
     with fileData as variable:
         for line in variable:
+            #checking for valid mails using check function
             if(check(line.replace("\n",""))):
-                validDataList.append(line)
+                validDataList.append(line.replace("\n",""))
             else:
                 flag=True
+    #eliminating duplicate values from data
     validDataSet = set(validDataList)
+    #writing the data to new file 
     for validData in validDataSet:
-        validFile.write(validData)
+        validFile.write(validData+"\n")
     fileData.close()
     validFile.close()        
     #removing the old file
@@ -68,7 +83,7 @@ def fileValidation(**kwargs):
         print("file validated and edited succesfully")
     else:
         print("found no invalid data in file")
+    divider()
 
 
 
-fileValidation(file=r"C:\Users\saurav.aggarwal\Desktop\Python project\sample.txt")

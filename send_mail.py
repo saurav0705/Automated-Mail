@@ -1,4 +1,3 @@
-
 import smtplib 
 from email.mime.multipart import MIMEMultipart 
 from email.mime.text import MIMEText 
@@ -6,6 +5,7 @@ from email.mime.base import MIMEBase
 from email import encoders 
 from mailBody import mail_body
 from credentialDetail import getDetails
+
 
 def sendMAil(data,hr):
     # instance of MIMEMultipart 
@@ -65,5 +65,6 @@ def sendMAil(data,hr):
         print("Successfully sent to "+hr)
     except Exception as e:
         print("error:  "+str(e))
+    
 
-sendMAil(getDetails('saurav'),"sauravaggarwal98@gmail.com")
+

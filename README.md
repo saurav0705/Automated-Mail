@@ -2,9 +2,13 @@
 Automated mail system in which a mail can be send to multiple users all you need is to provide a document conatining mail id's of respective persons whom do you want to send the mail.
 
 
+
+
 #concept between master and weekend file
+
 master file :: contains all the emails whose mail is sent to the users it is just to prevent duplicate same mail to person.
 weekend filr :: contains all the person mails to who you want to send the mails. 
+
 
 workflow:::
 
